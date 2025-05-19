@@ -4,15 +4,17 @@
   <meta charset="UTF-8" />
   <title>Microtips Server</title>
 </head>
-<body style="font-family: sans-serif;">
-  <h1>✅ Microtips Server is Running</h1>
-  <p>To use this server, make a <code>POST</code> request to <code>/microtips</code> with a JSON body like:</p>
-  <div>
-    <pre>{
-  "user_id": "your_id_here",
-  "mood": "😢"
-}</pre>
+<body style="display: flex; justify-content: center; align-items: center; background-color: rgb(211, 211, 211);">
+  <div style="border: 1px solid black; padding: 20px; margin: 2em; width: 600px; background-color: white;">
+    <h1>✅ Microtips Server is Running</h1>
+    <p>To use this server, make a <code>POST</code> request to <code>/microtips</code> with a JSON body like:</p>
+    <div>
+      <pre>{
+    "user_id": "your_id_here",
+    "mood": "😢"
+  }</pre>
+    </div>
+    <p>Include your Bearer token in the <code>Authorization</code> header.</p>
   </div>
-  <p>Include your Bearer token in the <code>Authorization</code> header.</p>
 </body>
 </html>
