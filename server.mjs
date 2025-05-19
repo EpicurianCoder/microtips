@@ -6,6 +6,7 @@ const app = express();
 dotenv.config();
 const port = process.env.PORT || 3000;
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+app.use(express.static('public'));
 
 app.use(express.json());
 
@@ -25,7 +26,6 @@ const fallbackTips = [
 let cachedTips = [];
 let usedTipIndices = new Set();
 let tipIndex = 0;
-let update = false;
 
 async function updateGeminiTips() {
   try {
@@ -39,17 +39,13 @@ async function updateGeminiTips() {
         the list` }]
       }]
     });
-    const content = result.response.text();
 
+    // parse response
+    const content = result.response.text();
     let all = content.split('[');
     let middle = all[1].split(']')[0];
-    // Split by colon
     const parts = middle.split(':');
-    // Trim whitespace from each item
     const tips = parts.map(part => part.trim()).filter(Boolean);
-
-    // console.log("tips: ", tips);
-    // console.log("Tips Size: ", tips.length);
 
     cachedTips = tips;
     usedTipIndices.clear();
@@ -63,8 +59,6 @@ async function updateGeminiTips() {
     }
   }
 }
-
-updateGeminiTips();
 
 // Middleware to check for valid token
 function authenticateToken(req, res, next) {
@@ -106,6 +100,11 @@ app.post('/microtips', authenticateToken, async (req, res) => {
   else {
     res.status(204).send();
   }
+});
+
+// Handle GET request for /microtips by sending HTML file
+app.get('/microtips', (req, res) => {
+  res.sendFile('microtips.html', { root: 'public' });
 });
 
 app.listen(port, () => {
