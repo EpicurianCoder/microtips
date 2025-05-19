@@ -69,6 +69,7 @@ Use the provided curl example above or a simple test script to demonstrate that 
 ## 🧯 Integration Mitigation Plan
 
 - Teammate using this: Ricardo
+- Bearer Token and Gemini API key have been shared via private channels
 - Current status: ✅ Microservice is complete and working
 - Access instructions:
 
@@ -82,6 +83,15 @@ Use the provided curl example above or a simple test script to demonstrate that 
   - Check your HTTPS response to check errors
   - Verify the Bearer Token did not fail
   - Contact me via pickardc@oregonstate.edu / canvas
+
+Alternatively Ricardo has been provided access to the Repository and can clone it and run it locally.
+
+This can be done:
+
+- With the use of an .env file containing the Gemini API key:
+  - This will refresh the list of responses and continually provide new responses each time the API is called
+- Without the use of an .env file containing the Gemini API key:
+  - This will cycle through a list of ten provided responses, and will not fail despite not making successful Gemini API calls.
 
 ## 📎 Assumptions & Notes
 
