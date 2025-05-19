@@ -91,7 +91,7 @@ The microservice may return the following HTTP status codes:
 
 ## 📈 UML Sequence Diagram
 
-![UML Sequence Diagram](./diagram.png)
+![UML Sequence Diagram](./diagram2.png)
 
 ## 🧪 Test
 
