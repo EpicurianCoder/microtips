@@ -99,6 +99,8 @@ Use the provided curl example above or a simple test script to demonstrate that 
 
 ## 🧯 Integration Mitigation Plan
 
+Currently the service is running on a dedicated Linux server and is running a CloudFare tunnel, and is using my personal domain. To improve security, this service is using a bearer token.
+
 - Teammate using this: Ricardo
 - Bearer Token has been shared via private channel
 - Current status: Microservice is complete and working ✅
