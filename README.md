@@ -67,15 +67,14 @@ Use the provided curl example above or a simple test script to demonstrate that 
 - Access instructions:
 
   - Make a POST request to: https://api.callumpickard.com/microtips
-  - Include an Authorization header and a bearer token
-  - Include user_id field with `string`
-  - Include mood field with `UTF-8 encoded emoji`
-  - Create a .env file with the following:
-
-    AUTH_TOKEN='your_bearer_here'
+  - Include an Authorization header and with `Bearer token`
+  - Include a Content-Type header with `application/json`
+  - Ensure JSON contains user_id field - `string`
+  - Ensure JSON contains mood field - `UTF-8 encoded emoji`
 
 - If the microservice does not respond:
-  - Check your .env setup
+  - Check your HTTPS response to check errors
+  - Verify the Bearer Token did not fail
   - Contact me via pickardc@oregonstate.edu / canvas
 
 ## 📎 Assumptions & Notes
