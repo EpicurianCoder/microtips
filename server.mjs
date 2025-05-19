@@ -33,8 +33,11 @@ async function updateGeminiTips() {
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: `
         Return raw text containing 10 positive tips for someone feeling sad. 
-        Please provide a simple sentence for each these, and return them as 
-        a colon seperated list, with [ and ] terminating the list` }] }]
+        Please provide an obscure suggestion as a singl sentence for each 
+        these, dont mention things like getting sunlight or taking walks, 
+        and return them as a colon seperated list, with [ and ] terminating 
+        the list` }]
+      }]
     });
     const content = result.response.text();
 
