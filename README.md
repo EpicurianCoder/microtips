@@ -35,7 +35,7 @@ Make a POST request to the /microtips endpoint with the following JSON body:
 Example curl call:
 
 ```bash
-curl -X POST http://localhost:3000/microtips \
+curl -X POST http://api.callumpickard.com/microtips \
  -H "Content-Type: application/json" \
  -H "Authorization: Bearer MICROTIPS_TOKEN" \
  -d '{"user_id": "abc123", "mood": "😢"}'
@@ -49,7 +49,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const bearerToken = process.env.MICROTIPS_TOKEN;
 
-fetch("http://localhost:3000/microtips", {
+fetch("http://api.callumpickard.com/microtips", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -57,7 +57,7 @@ fetch("http://localhost:3000/microtips", {
   },
   body: JSON.stringify({
     user_id: "12345",
-    mood: ":cry:",
+    mood: "😢",
   }),
 })
   .then((res) => res.json())
