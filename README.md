@@ -91,9 +91,7 @@ The microservice may return the following HTTP status codes:
 
 ## 📈 UML Sequence Diagram
 
-Client -> Microservice: POST /microtips with user_id and mood
-Microservice -> Gemini API (optional): Request list of tips
-Microservice -> Client: Return JSON response with tip (or 204)
+![UML Sequence Diagram](./diagram.png)
 
 ## 🧪 Test
 
