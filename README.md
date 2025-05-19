@@ -4,9 +4,8 @@ This microservice responds with short positive tips based on user mood, using Ge
 
 ## 📌 Overview
 
-- Language: Node.js (ESM)
+- Language: Node.js
 - Framework: Express.js
-- API: Google Gemini (Generative AI)
 - Endpoint: /microtips
 - Method: POST
 - Auth: Bearer token via Authorization header
@@ -16,11 +15,11 @@ This microservice responds with short positive tips based on user mood, using Ge
 
 This microservice requires a valid token passed in the Authorization header:
 
-Authorization: Bearer <API_TOKEN>
+Authorization: Bearer <MICROTIPS_TOKEN>
 
 The expected token is stored in your `.env` file as:
 
-`API_TOKEN=your_secure_token_here`
+`MICROTIPS_TOKEN=your_secure_token_here`
 
 ## 📬 How to REQUEST Data
 
@@ -38,7 +37,7 @@ Example curl call:
 ```bash
 curl -X POST http://localhost:3000/microtips \
  -H "Content-Type: application/json" \
- -H "Authorization: Bearer YOUR_API_TOKEN" \
+ -H "Authorization: Bearer MICROTIPS_TOKEN" \
  -d '{"user_id": "abc123", "mood": "😢"}'
 ```
 
@@ -48,7 +47,7 @@ Example JavaScript call:
 import dotenv from "dotenv";
 
 dotenv.config();
-const bearerToken = process.env.BEARER_TOKEN;
+const bearerToken = process.env.MICROTIPS_TOKEN;
 
 fetch("http://localhost:3000/microtips", {
   method: "POST",
@@ -103,8 +102,8 @@ Use the provided curl example above or a simple test script to demonstrate that 
 ## 🧯 Integration Mitigation Plan
 
 - Teammate using this: Ricardo
-- Bearer Token and Gemini API key have been shared via private channels
-- Current status: ✅ Microservice is complete and working
+- Bearer Token has been shared via private channel
+- Current status: Microservice is complete and working ✅
 - Access instructions:
 
   - Make a POST request to: https://api.callumpickard.com/microtips
