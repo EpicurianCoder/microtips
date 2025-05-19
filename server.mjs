@@ -54,7 +54,7 @@ async function updateGeminiTips() {
     cachedTips = tips;
     usedTipIndices.clear();
     tipIndex = 0;
-    console.log("tips updated");
+    console.log("Gemini Call executed Successfully: Cache Updated");
     
   } catch (err) {
     console.warn("⚠️ Gemini tips fetch failed. Falling back.", err.message);
@@ -79,10 +79,14 @@ function authenticateToken(req, res, next) {
 
 app.post('/microtips', authenticateToken, async (req, res) => {
   const { user_id, mood } = req.body;
+  console.log("\nPOST request received and authenticated!")
 
   if (!user_id || !mood) {
     return res.status(400).json({ error: 'Bad Request: user_id and mood are required' });
   }
+
+  console.log("User ID: ", user_id);
+  console.log("Mood: ", mood);
 
   if (mood === "😢") {
     if (cachedTips.length === 0) cachedTips = fallbackTips;
@@ -91,11 +95,10 @@ app.post('/microtips', authenticateToken, async (req, res) => {
     usedTipIndices.add(tipIndex % cachedTips.length);
     tipIndex++;
 
-    res.json({
-      user_id,
-      timestamp: new Date().toISOString(),
-      tip: selectedTip
-    });
+    const res_json = { user_id: user_id, timestamp: new Date().toISOString(), tip: selectedTip};
+    console.log("Response: ", res_json);
+
+    res.json(res_json);
     if (usedTipIndices.size >= 5) {
       updateGeminiTips();
     }
