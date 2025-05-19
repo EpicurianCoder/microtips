@@ -33,7 +33,7 @@ async function updateGeminiTips() {
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: `
         Return raw text containing 10 positive tips for someone feeling sad. 
-        Please provide an obscure suggestion as a singl sentence for each 
+        Please provide an obscure suggestion as a single sentence for each 
         these, dont mention things like getting sunlight or taking walks, 
         and return them as a colon seperated list, with [ and ] terminating 
         the list` }]
@@ -41,12 +41,10 @@ async function updateGeminiTips() {
     });
     const content = result.response.text();
 
-    // Remove everything before and including first '['
-    let trimmed = content.replace(/^.*?\[/, '');
-    // Remove everything after and including last ']'
-    trimmed = trimmed.replace(/\].*$/, '');
+    let all = content.split('[');
+    let middle = all[1].split(']')[0];
     // Split by colon
-    const parts = trimmed.split(':');
+    const parts = middle.split(':');
     // Trim whitespace from each item
     const tips = parts.map(part => part.trim()).filter(Boolean);
 
