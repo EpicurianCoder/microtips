@@ -42,6 +42,30 @@ curl -X POST http://localhost:3000/microtips \
  -d '{"user_id": "abc123", "mood": "😢"}'
 ```
 
+Example JavaScript call:
+
+```js
+import dotenv from "dotenv";
+
+dotenv.config();
+const bearerToken = process.env.BEARER_TOKEN;
+
+fetch("http://localhost:3000/microtips", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${bearerToken}`,
+  },
+  body: JSON.stringify({
+    user_id: "12345",
+    mood: ":cry:",
+  }),
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err));
+```
+
 ## 📥 How to RECEIVE Data
 
 If mood is "😢", the response will contain a positive tip:
