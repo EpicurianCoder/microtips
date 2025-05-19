@@ -80,6 +80,10 @@ function authenticateToken(req, res, next) {
 app.post('/microtips', authenticateToken, async (req, res) => {
   const { user_id, mood } = req.body;
 
+  if (!user_id || !mood) {
+    return res.status(400).json({ error: 'Bad Request: user_id and mood are required' });
+  }
+
   if (mood === "😢") {
     if (cachedTips.length === 0) cachedTips = fallbackTips;
 
