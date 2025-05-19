@@ -18,35 +18,41 @@ This microservice requires a valid token passed in the Authorization header:
 
 Authorization: Bearer <API_TOKEN>
 
-The expected token is stored in your .env file as:
+The expected token is stored in your `.env` file as:
 
-API_TOKEN=your_secure_token_here
+`API_TOKEN=your_secure_token_here`
 
 ## 📬 How to REQUEST Data
 
 Make a POST request to the /microtips endpoint with the following JSON body:
 
+```js
 {
 "user_id": "abc123",
 "mood": "😢"
 }
+```
 
 Example curl call:
 
+```bash
 curl -X POST http://localhost:3000/microtips \
  -H "Content-Type: application/json" \
  -H "Authorization: Bearer YOUR_API_TOKEN" \
  -d '{"user_id": "abc123", "mood": "😢"}'
+```
 
 ## 📥 How to RECEIVE Data
 
 If mood is "😢", the response will contain a positive tip:
 
+```js
 {
 "user_id": "abc123",
 "timestamp": "2025-05-19T23:32:00.123Z",
 "tip": "Take a 10-minute walk and notice five things you see."
 }
+```
 
 If mood is anything else, the service will respond with HTTP 204 No Content and an empty body.
 
